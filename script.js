@@ -3,8 +3,12 @@ const email = document.getElementById("email");
 const errorElement = document.getElementById("error");
 const confirmEmail = document.getElementById("confirmation-email");
 const dismissBtn = document.getElementById("dismiss-btn");
+const formCard = document.querySelector(".form-card");
+const submitCard = document.querySelector(".submit-card");
+const submitBtn = document.getElementById("submit-btn");
 
-form.addEventListener("submit", (e) => {
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   let errorMessages = [];
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -14,15 +18,22 @@ form.addEventListener("submit", (e) => {
     errorMessages.push("Please fill in the email address");
   } else if (!isFormatValid) {
     errorMessages.push("Valid email required");
+  } else {
+    formCard.classList.add("inactive");
+    submitCard.classList.add("active");
+    confirmEmail.innerText = email.value;
+    errorElement.innerText = "";
+    email.value = "";
+    email.classList.remove("error-style");
   }
 
   if (errorMessages.length > 0) {
-    e.preventDefault();
     errorElement.innerHTML = errorMessages.join(",");
     email.classList.add("error-style");
   }
 });
 
 dismissBtn.addEventListener("click", () => {
-  window.location.href = "index.html";
+  formCard.classList.remove("inactive");
+  submitCard.classList.remove("active");
 });

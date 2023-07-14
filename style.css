@@ -34,6 +34,10 @@ p {
   max-width: 800px;
 }
 
+.form-card.inactive {
+  display: none;
+}
+
 .content {
   padding: 1.8rem 1rem;
   display: flex;
@@ -108,6 +112,15 @@ form button {
   cursor: pointer;
 }
 
+form button:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 87, 147, 1) 0%,
+    rgba(255, 93, 126, 1) 18%,
+    rgba(255, 98, 87, 1) 38%
+  );
+}
+
 .desktop-image {
   display: none;
 }
@@ -127,6 +140,14 @@ form button {
   flex-direction: column;
   justify-content: space-between;
   padding-top: 6rem;
+}
+
+.submit-card.inactive {
+  display: none;
+}
+
+.submit-card.active {
+  display: block;
 }
 
 .submit-card .body .content-heading {
@@ -151,9 +172,13 @@ form button {
 }
 
 #dismiss-btn:hover {
-  background-color: var(--tomato);
   color: white;
-  box-shadow: 0px 5px 15px var(--tomato);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 87, 147, 1) 0%,
+    rgba(255, 93, 126, 1) 18%,
+    rgba(255, 98, 87, 1) 38%
+  );
 }
 
 @media screen and (min-width: 768px) {
